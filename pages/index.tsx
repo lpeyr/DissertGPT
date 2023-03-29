@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
-import { AlertTriangle, Loader2 } from "lucide-react"
+import { AlertTriangle, ArrowRight, Copy, Loader2 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { Layout } from "@/components/layout"
@@ -34,7 +34,7 @@ export default function IndexPage() {
       return
     }
     ;(document.getElementById("send") as HTMLButtonElement).disabled = true
-    document.getElementById("wait").classList.remove("collapse")
+    document.getElementById("wait").classList.remove("hidden")
     const configuration = new Configuration({
       apiKey: key,
     })
@@ -51,7 +51,7 @@ export default function IndexPage() {
         {
           role: "user",
           content:
-            "Rédige l&apos;introduction (amorce, présentation du sujet, problématique et annonce du plan), le contenu de la dissertation (avec des citations), et la conclusion du sujet suivant : " +
+            "Rédige l&apos;introduction (amorce, présentation du sujet, problématique et annonce du plan), le contenu de la dissertation organisé en au moins deux grandes parties (I, II, etc.) contenant chacune au moins deux sous-parties (A, B, etc.) (avec des citations), et la conclusion du sujet suivant : " +
             subject,
         },
       ],
@@ -59,8 +59,8 @@ export default function IndexPage() {
     let res = completion.data.choices[0].message.content
     document.getElementById("response").innerHTML = res
     ;(document.getElementById("send") as HTMLButtonElement).disabled = false
-    document.getElementById("wait").classList.remove("collapse")
-    document.getElementById("wait").classList.add("collapse")
+    document.getElementById("wait").classList.remove("hidden")
+    document.getElementById("wait").classList.add("hidden")
   }
 
   function copy() {
@@ -89,9 +89,11 @@ export default function IndexPage() {
         />
         <div className="space-x-2">
           <Button id="send" onClick={sendSubject}>
+            <ArrowRight className="mr-2" size={16} />
             Envoyer le sujet
           </Button>
           <Button variant="outline" id="send" onClick={copy}>
+            <Copy className="mr-2" size={16} />
             Copier le résultat
           </Button>
         </div>
@@ -103,14 +105,14 @@ export default function IndexPage() {
           Votre dissertation s&apos;affichera ici. Le processus peut prendre du
           temps.
         </p>
-        <div className="flex space-x-2 p-5 m-2 rounded-xl dark:bg-orange-900 bg-orange-200 text-orange-800 dark:text-orange-200">
-          <AlertTriangle className="mr-2" />
+        <div className="flex flex-col md:flex-row items-center space-x-2 p-5 m-2 rounded-xl dark:bg-orange-900 bg-orange-200 text-orange-800 dark:text-orange-200">
+          <AlertTriangle className="mr-2" size={24} />
           DissertGPT peut générer du contenu pouvant avoir des inexacitudes, et
           être offensant. La mise en forme de la page peut aussi être
           incorrecte.
         </div>
       </section>
-      <section id="wait" className="collapse">
+      <section id="wait" className="hidden">
         <div className="flex flex-col justify-center items-center">
           <Loader2 className="animate-spin" size={96} />
           <h3>Contenu en cours de génération</h3>
