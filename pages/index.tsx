@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
+import { AlertTriangle, Loader2 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { Layout } from "@/components/layout"
@@ -33,7 +34,7 @@ export default function IndexPage() {
       return
     }
     ;(document.getElementById("send") as HTMLButtonElement).disabled = true
-
+    document.getElementById("wait").classList.remove("collapse")
     const configuration = new Configuration({
       apiKey: key,
     })
@@ -58,6 +59,8 @@ export default function IndexPage() {
     let res = completion.data.choices[0].message.content
     document.getElementById("response").innerHTML = res
     ;(document.getElementById("send") as HTMLButtonElement).disabled = false
+    document.getElementById("wait").classList.remove("collapse")
+    document.getElementById("wait").classList.add("collapse")
   }
 
   function copy() {
@@ -100,6 +103,18 @@ export default function IndexPage() {
           Votre dissertation s&apos;affichera ici. Le processus peut prendre du
           temps.
         </p>
+        <div className="flex space-x-2 p-5 m-2 rounded-xl dark:bg-orange-900 bg-orange-200 text-orange-800 dark:text-orange-200">
+          <AlertTriangle className="mr-2" />
+          DissertGPT peut générer du contenu pouvant avoir des inexacitudes, et
+          être offensant. La mise en forme de la page peut aussi être
+          incorrecte.
+        </div>
+      </section>
+      <section id="wait" className="collapse">
+        <div className="flex flex-col justify-center items-center">
+          <Loader2 className="animate-spin" size={96} />
+          <h3>Contenu en cours de génération</h3>
+        </div>
       </section>
       <section className="m-2" id="response"></section>
     </Layout>

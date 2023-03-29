@@ -27,6 +27,7 @@ export function MainNav({ items }: MainNavProps) {
           {siteConfig.name}
         </span>
       </Link>
+      <p className="flex items-center">v.1.1</p>
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
           {items?.map(
