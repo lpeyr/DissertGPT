@@ -12,18 +12,18 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Next.js",
+  name: "DissertGPT",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Site permettant de créer des dissertations en français avec GPT-4.",
   mainNav: [
     {
-      title: "Home",
+      title: "Accueil",
       href: "/",
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
+    twitter: "https://twitter.com/LeoCorpNews",
+    github: "https://github.com/Leo-Peyronnet/DissertGPT",
     docs: "https://ui.shadcn.com",
   },
 }
