@@ -50,7 +50,7 @@ export default function IndexPage() {
         {
           role: "user",
           content:
-            "Rédige l&apos;introduction (amorce, présentation du sujet, problématique et annonce du plan), le contenu de la dissertation (organisé en parties, avec des citations), et la conclusion du sujet suivant : " +
+            "Rédige l&apos;introduction (amorce, présentation du sujet, problématique et annonce du plan), le contenu de la dissertation (avec des citations), et la conclusion du sujet suivant : " +
             subject,
         },
       ],
