@@ -20,6 +20,10 @@ export const siteConfig: SiteConfig = {
       title: "Accueil",
       href: "/",
     },
+    {
+      title: "Mes dissertations",
+      href: "/dissertations",
+    },
   ],
   links: {
     twitter: "https://twitter.com/LeoCorpNews",

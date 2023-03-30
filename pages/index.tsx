@@ -3,6 +3,7 @@ import Link from "next/link"
 import { AlertTriangle, ArrowRight, Copy, Loader2 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
+import { DissertInfo } from "@/lib/dis_info"
 import { Layout } from "@/components/layout"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,9 +13,11 @@ import { Textarea } from "@/components/ui/textarea"
 const { Configuration, OpenAIApi } = require("openai")
 
 export default function IndexPage() {
+  let disserts: DissertInfo[] = []
+  let k = ""
   if (typeof window !== "undefined") {
-    ;(document.getElementById("pwr") as HTMLInputElement).value =
-      localStorage.getItem("key")
+    k = localStorage.getItem("key")
+    disserts = JSON.parse(localStorage.getItem("disserts") ?? "[]")
   }
   async function sendSubject() {
     let subject: string = (
@@ -57,10 +60,12 @@ export default function IndexPage() {
       ],
     })
     let res = completion.data.choices[0].message.content
+    disserts.push({ subject: subject, content: res })
     document.getElementById("response").innerHTML = res
     ;(document.getElementById("send") as HTMLButtonElement).disabled = false
     document.getElementById("wait").classList.remove("hidden")
     document.getElementById("wait").classList.add("hidden")
+    localStorage.setItem("disserts", JSON.stringify(disserts))
   }
 
   function copy() {
@@ -82,7 +87,12 @@ export default function IndexPage() {
         <p>Entrez les informations concernant votre sujet.</p>
       </section>
       <section id="infos" className="flex flex-col items-center space-y-2 m-2">
-        <Input id="pwr" type="password" placeholder="Clé d'API OpenAI" />
+        <Input
+          id="pwr"
+          type="password"
+          placeholder="Clé d'API OpenAI"
+          defaultValue={k}
+        />
         <Textarea
           id="subject"
           placeholder="Entrez votre sujet de dissertation ici"
