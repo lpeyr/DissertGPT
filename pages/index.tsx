@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
+import { encode } from "gpt-token-utils"
 import {
   AlertTriangle,
   ArrowRight,
@@ -221,7 +222,6 @@ export default function IndexPage() {
       </section>
       <Separator className="my-4" />
       <section className="m-2">
-        <h2 className="font-bold">Résultat</h2>
         <div className="flex space-x-2 items-center">
           <h2 className="font-bold">Résultat</h2>
           <p
@@ -235,7 +235,7 @@ export default function IndexPage() {
           Votre dissertation s&apos;affichera ici. Le processus peut prendre du
           temps.
         </p>
-        <div className="flex flex-col md:flex-row items-center space-x-2 p-5 m-2 rounded-xl dark:bg-orange-900 bg-orange-200 text-orange-800 dark:text-orange-200">
+        <div className="flex flex-col md:flex-row items-center space-x-2 p-5 m-2 rounded-xl dark:bg-orange-950 bg-orange-100 text-orange-800 dark:text-orange-200">
           <AlertTriangle className="mr-2" size={24} />
           DissertGPT peut générer du contenu pouvant avoir des inexacitudes, et
           être offensant. La mise en forme de la page peut aussi être
