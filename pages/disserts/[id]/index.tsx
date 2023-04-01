@@ -32,8 +32,13 @@ export default function PostPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="m-2" id="ct">
-        {getContent()}
+      <section className="flex justify-center">
+        <section
+          className="m-2 p-4 bg-slate-100 dark:bg-slate-800 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%]"
+          id="ct"
+        >
+          {getContent()}
+        </section>
       </section>
     </Layout>
   )
