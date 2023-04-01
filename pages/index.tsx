@@ -86,6 +86,16 @@ export default function IndexPage() {
       document.getElementById("wait").classList.remove("hidden")
       document.getElementById("wait").classList.add("hidden")
       localStorage.setItem("disserts", JSON.stringify(disserts))
+
+      let e = encode(res)
+      let price = 0
+      if (model === "gpt-4") {
+        price = (e.length / 1000) * 0.06
+      } //gpt-3.5-turbo
+      else {
+        price = (e.length / 1000) * 0.002
+      }
+      document.getElementById("price").innerHTML = price.toString()
     } catch (error) {
       alert("An error occured:\n" + error)
       document.getElementById("wait").classList.add("hidden")
@@ -212,6 +222,15 @@ export default function IndexPage() {
       <Separator className="my-4" />
       <section className="m-2">
         <h2 className="font-bold">Résultat</h2>
+        <div className="flex space-x-2 items-center">
+          <h2 className="font-bold">Résultat</h2>
+          <p
+            id="price"
+            className="px-2 rounded-full bg-green-200 dark:bg-green-950 text-green-800 dark:text-green-400 dark:border-green-400 border-green-800 border"
+          >
+            $0
+          </p>
+        </div>
         <p>
           Votre dissertation s&apos;affichera ici. Le processus peut prendre du
           temps.
