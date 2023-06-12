@@ -333,7 +333,7 @@ export default function IndexPage() {
             </SelectContent>
           </Select>
 
-          <Select onValueChange={changeGoal} defaultValue="full">
+          <Select onValueChange={changeGoal} defaultValue="super-d">
             <SelectTrigger className="sm:w-[240px]">
               <SelectValue placeholder="Mode" />
             </SelectTrigger>
