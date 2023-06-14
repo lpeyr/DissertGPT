@@ -343,13 +343,13 @@ export default function IndexPage() {
                 <SelectItem className="flex space-x-1" value="super-d">
                   <div className="flex space-x-1 items-center">
                     <Lightbulb size={16} />
-                    <p>Dissertation++</p>
+                    <p>Dissertation longue (v2)</p>
                   </div>
                 </SelectItem>
                 <SelectItem value="full">
                   <div className="flex space-x-1 items-center">
                     <FileText size={16} />
-                    <p>Dissertation</p>
+                    <p>Dissertation courte (v1.5)</p>
                   </div>
                 </SelectItem>
                 <SelectItem className="flex space-x-1" value="plan">
