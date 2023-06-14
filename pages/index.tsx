@@ -311,7 +311,7 @@ export default function IndexPage() {
             defaultValue={k}
           />
           <Select onValueChange={changeModel} defaultValue="gpt-4">
-            <SelectTrigger className="sm:w-[150px]">
+            <SelectTrigger className="sm:w-[150px] min-w-[130px]">
               <SelectValue placeholder="Modèle" />
             </SelectTrigger>
             <SelectContent>
@@ -334,7 +334,7 @@ export default function IndexPage() {
           </Select>
 
           <Select onValueChange={changeGoal} defaultValue="super-d">
-            <SelectTrigger className="sm:w-[240px]">
+            <SelectTrigger className="sm:w-[240px] min-w-[240px]">
               <SelectValue placeholder="Mode" />
             </SelectTrigger>
             <SelectContent>
