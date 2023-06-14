@@ -44,7 +44,7 @@ export default function IndexPage() {
     "Rédige l'introduction (amorce, présentation du sujet, problématique et annonce du plan), le contenu de la dissertation organisé en au moins deux grandes parties (I, II, III etc.) contenant chacune au moins deux sous-parties (A, B, etc.) (avec des citations), et la conclusion du sujet suivant : "
   let disserts: DissertInfo[] = []
   let k = ""
-  let isSuper = false
+  let isSuper = true
   if (typeof window !== "undefined") {
     k = localStorage.getItem("key")
     disserts = JSON.parse(localStorage.getItem("disserts") ?? "[]")
