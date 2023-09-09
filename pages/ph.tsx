@@ -222,11 +222,10 @@ export default function IndexPage() {
           Votre dissertation s&apos;affichera ici. Le processus peut prendre du
           temps.
         </p>
-        <div className="flex flex-col md:flex-row items-center space-x-2 p-5 m-2 rounded-xl dark:bg-orange-950 bg-orange-100 text-orange-800 dark:text-orange-200">
-          <AlertTriangle className="mr-2" size={24} />
-          DissertGPT peut générer du contenu pouvant avoir des inexacitudes, et
-          être offensant. La mise en forme de la page peut aussi être
-          incorrecte.
+        <div className="flex flex-col md:flex-row items-center space-x-2 p-2 m-2 rounded-md dark:bg-orange-950 bg-orange-100 border border-orange-800 dark:border-orange-200 text-orange-800 dark:text-orange-200">
+          <AlertTriangle className="mr-2" size={20} />
+          La technologie de l'IA est encore expérimentale et peut produire des
+          erreurs. Il convient de l'utiliser avec un jugement humain.
         </div>
       </section>
       <section id="wait" className="hidden">
