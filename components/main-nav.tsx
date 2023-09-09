@@ -28,7 +28,7 @@ export function MainNav({ items }: MainNavProps) {
         </span>
       </Link>
       <p className="text-center flex items-center px-2 py-1 text-sm rounded-full m-1 text-blue-900 dark:text-blue-300 dark:bg-blue-900 bg-blue-100 border border-blue-600">
-        v2.1
+        v3.0
       </p>
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
