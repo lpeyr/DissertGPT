@@ -408,8 +408,8 @@ export default function IndexPage() {
         </p>
         <div className="flex flex-col md:flex-row items-center space-x-2 p-2 m-2 rounded-md dark:bg-orange-950 bg-orange-100 border border-orange-800 dark:border-orange-200 text-orange-800 dark:text-orange-200">
           <AlertTriangle className="mr-2" size={20} />
-          La technologie de l'IA est encore expérimentale et peut produire des
-          erreurs. Il convient de l'utiliser avec un jugement humain.
+          La technologie de l&apos;IA est encore expérimentale et peut produire
+          des erreurs. Il convient de l&apos;utiliser avec un jugement humain.
         </div>
       </section>
       <section id="wait" className="hidden">
