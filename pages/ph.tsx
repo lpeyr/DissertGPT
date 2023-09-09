@@ -140,6 +140,11 @@ export default function IndexPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="m-2">
+        <h1>Philosophie</h1>
+        <p>Créez des dissertations type bac de philo avec GPT-4.</p>
+      </section>
+      <Separator className="my-4" />
+      <section className="m-2">
         <h2 className="font-bold">Informations</h2>
         <p>Entrez les informations concernant votre sujet.</p>
       </section>
