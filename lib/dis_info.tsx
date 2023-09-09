@@ -5,4 +5,5 @@ export interface DissertInfo {
 export interface DissertItem {
   subject: string
   id: number
+  philo: boolean
 }
