@@ -53,7 +53,7 @@ export default function PostPage() {
       </section>
       <section className="flex justify-center">
         <section
-          className="m-2 p-4 bg-slate-100 dark:bg-slate-800 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%] text-justify"
+          className="m-2 p-4 bg-slate-100 dark:bg-slate-900 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%] text-justify"
           id="ct"
         >
           {getContent()}
