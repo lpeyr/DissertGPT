@@ -34,7 +34,7 @@ export default function DissertPage() {
           <TabsTrigger value="ph">Philosophie</TabsTrigger>
         </TabsList>
         <TabsContent value="fr">
-          <section className="m-2 p-5 flex flex-col">
+          <section className="m-2 p-5 flex flex-wrap justify-center md:justify-start">
             {disserts.length > 0 ? (
               disserts.map((el, index) => {
                 return (
@@ -56,7 +56,7 @@ export default function DissertPage() {
           </section>
         </TabsContent>
         <TabsContent value="ph">
-          <section className="m-2 p-5 flex flex-col">
+          <section className="m-2 p-5 flex flex-wrap justify-center md:justify-start">
             {disserts_ph.length > 0 ? (
               disserts_ph.map((el, index) => {
                 return (
