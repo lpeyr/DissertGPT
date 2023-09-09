@@ -237,7 +237,9 @@ export default function IndexPage() {
       else {
         price = (e.length / 1000) * 0.002
       }
-      document.getElementById("price").innerHTML = price.toString()
+      document.getElementById("price").innerHTML = `$${price
+        .toFixed(4)
+        .toString()}`
     } catch (error) {
       alert("An error occured:\n" + error)
       document.getElementById("wait").classList.add("hidden")
