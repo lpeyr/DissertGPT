@@ -10,6 +10,7 @@ import {
   Lightbulb,
   ListStart,
   Loader2,
+  Pen,
   Pencil,
   Zap,
 } from "lucide-react"
@@ -122,6 +123,10 @@ export default function IndexPage() {
 
   function changeGoal(v) {
     switch (v) {
+      case "intro":
+        task =
+          "Rédige l'introduction de dissertation du sujet avec accroche, définition provisoire et RAPIDE des termes principaux, problématique avec trois paragraphes (D'une part..., d'autre part..., donc...), enjeux (expliquant pourquoi on répond à cette question), annonce du plan (soit Nature, Existence, Valeur OU Sens 1, sens 2, sens 3)."
+        break
       default:
         task =
           'Rédige la problématisation du sujet avec trois paragraphes MAX contenu deux phrases MAX, le premier commence impérativement par "d\'une part", le second par "d\'autre part" et le troisième par "donc". Structure: 1er paragraphe : première réponse [R1] argumentée à partir de l\'analyse des notions du sujet. 2e paragraphe : questionnement de la première réponse. 3e paragraphe : reprise synthétique [S] du problème avec une question qui formule clairement l\'alternative fondamentale : "R1 ou bienR2 ?". Mettre en gras les idées.'
@@ -190,6 +195,12 @@ export default function IndexPage() {
                   <div className="flex space-x-1 items-center">
                     <Lightbulb size={16} />
                     <p>Problématisation</p>
+                  </div>
+                </SelectItem>
+                <SelectItem className="flex space-x-1" value="intro">
+                  <div className="flex space-x-1 items-center">
+                    <Pencil size={16} />
+                    <p>Introduction</p>
                   </div>
                 </SelectItem>
               </SelectGroup>
