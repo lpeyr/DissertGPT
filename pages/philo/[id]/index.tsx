@@ -44,7 +44,7 @@ export default function PostPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="flex space-x-2 items-center m-2">
+      <section className="flex space-x-2 items-center m-2 print:hidden">
         <h2 className="font-bold">Prix</h2>
         <p
           id="price"
@@ -55,7 +55,7 @@ export default function PostPage() {
       </section>
       <section className="flex justify-center">
         <section
-          className="m-2 p-4 bg-slate-100 dark:bg-slate-900 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%] text-justify"
+          className="m-2 p-4 shadow-lg print:shadow-none print:text-black dark:bg-slate-900 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%] text-justify"
           id="ct"
         >
           {getContent()}

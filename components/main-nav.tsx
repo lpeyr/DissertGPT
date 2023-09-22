@@ -22,7 +22,10 @@ interface MainNavProps {
 export function MainNav({ items }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10 items-center">
-      <Link href="/" className="hidden items-center space-x-2 md:flex">
+      <Link
+        href="/"
+        className="hidden items-center space-x-2 md:flex print:block"
+      >
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -56,7 +59,7 @@ export function MainNav({ items }: MainNavProps) {
             className="-ml-4 text-base hover:bg-transparent focus:ring-0 md:hidden"
           >
             {" "}
-            <span className="font-bold">Menu</span>
+            <span className="font-bold print:hidden">Menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
