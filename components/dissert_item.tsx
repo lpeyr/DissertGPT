@@ -22,6 +22,20 @@ export function DissertUiItem(props: DissertItem) {
     return gradients[Math.floor(Math.random() * gradients.length)]
   }
 
+  function getLabel() {
+    if (!props.philo) return ""
+    switch (props.type) {
+      case "ph_prob":
+        return "Problématique"
+      case "ph_intro":
+        return "Introduction"
+      default:
+        return "Problématique"
+    }
+  }
+
+  const label = getLabel()
+
   return (
     <TooltipProvider>
       <Tooltip>
@@ -36,11 +50,20 @@ export function DissertUiItem(props: DissertItem) {
                 getRandomGradient()
               }
             ></span>
-            <h3 className="m-2 text-left">
-              {props.subject.length > 40
-                ? props.subject.substring(0, 40) + "..."
-                : props.subject}
-            </h3>
+            <span className="flex flex-col items-start">
+              {label == "" ? (
+                <></>
+              ) : (
+                <span className="w-auto p-1 mx-2 text-sm mt-1 rounded-full border border-slate-500 dark:border-slate-400 text-slate-500 dark:text-slate-400">
+                  {label}
+                </span>
+              )}
+              <h3 className="m-2 text-left">
+                {props.subject.length > 40
+                  ? props.subject.substring(0, 40) + "..."
+                  : props.subject}
+              </h3>
+            </span>
           </Link>
         </TooltipTrigger>
         <TooltipContent className="max-w-[380px]">

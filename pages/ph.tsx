@@ -16,7 +16,7 @@ import {
 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
-import { DissertInfo } from "@/lib/dis_info"
+import { ContentType, DissertInfo } from "@/lib/dis_info"
 import { Layout } from "@/components/layout"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -39,6 +39,7 @@ export default function IndexPage() {
   let task =
     'Rédige la problématisation du sujet avec trois paragraphes MAX contenu deux phrases MAX, le premier commence impérativement par "d\'une part", le second par "d\'autre part" et le troisième par "donc". Structure: 1er paragraphe : première réponse [R1] argumentée à partir de l\'analyse des notions du sujet. 2e paragraphe : questionnement de la première réponse. 3e paragraphe : reprise synthétique [S] du problème avec une question qui formule clairement l\'alternative fondamentale : "R1 ou bienR2 ?". Mettre en gras les idées.'
   let disserts: DissertInfo[] = []
+  let type: ContentType = "ph_prob"
   let k = ""
   let isSuper = true
   if (typeof window !== "undefined") {
@@ -84,7 +85,7 @@ export default function IndexPage() {
         ],
       })
       let res = completion.data.choices[0].message.content
-      disserts.push({ subject: subject, content: res })
+      disserts.push({ subject: subject, content: res, type: type })
       document.getElementById("response").innerHTML = res
       ;(document.getElementById("send") as HTMLButtonElement).disabled = false
       document.getElementById("wait").classList.remove("hidden")
@@ -126,10 +127,12 @@ export default function IndexPage() {
       case "intro":
         task =
           "Rédige l'introduction de dissertation du sujet avec accroche, définition provisoire et RAPIDE des termes principaux, problématique avec trois paragraphes (D'une part..., d'autre part..., donc...), enjeux (expliquant pourquoi on répond à cette question), annonce du plan (soit Nature, Existence, Valeur OU Sens 1, sens 2, sens 3)."
+        type = "ph_intro"
         break
       default:
         task =
           'Rédige la problématisation du sujet avec trois paragraphes MAX contenu deux phrases MAX, le premier commence impérativement par "d\'une part", le second par "d\'autre part" et le troisième par "donc". Structure: 1er paragraphe : première réponse [R1] argumentée à partir de l\'analyse des notions du sujet. 2e paragraphe : questionnement de la première réponse. 3e paragraphe : reprise synthétique [S] du problème avec une question qui formule clairement l\'alternative fondamentale : "R1 ou bienR2 ?". Mettre en gras les idées.'
+        type = "ph_prob"
         break
     }
   }

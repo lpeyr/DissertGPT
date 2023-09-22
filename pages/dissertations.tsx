@@ -60,7 +60,12 @@ export default function DissertPage() {
             {disserts_ph.length > 0 ? (
               disserts_ph.map((el, index) => {
                 return (
-                  <DissertUiItem philo={true} subject={el.subject} id={index} />
+                  <DissertUiItem
+                    philo={true}
+                    subject={el.subject}
+                    id={index}
+                    type={el.type}
+                  />
                 )
               })
             ) : (
