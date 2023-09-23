@@ -4,8 +4,10 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { encode } from "gpt-token-utils"
 import parse from "html-react-parser"
+import { Printer } from "lucide-react"
 
 import { Layout } from "@/components/layout"
+import { Button } from "@/components/ui/button"
 
 export default function PostPage() {
   const router = useRouter()
@@ -62,21 +64,19 @@ export default function PostPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="flex space-x-2 items-center m-2 print:hidden">
-        <h2 className="font-bold">Prix</h2>
-        <p
-          id="price"
-          className="px-2 rounded-full bg-green-200 dark:bg-green-950 text-green-800 dark:text-green-400 dark:border-green-400 border-green-800 border"
-        >
-          {getPrice()}
-        </p>
-      </section>
-      <section className="flex justify-center">
+      <section className="flex flex-col items-center">
         <section
           className="m-2 p-4 shadow-lg print:shadow-none print:text-black dark:bg-slate-900 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%] text-justify"
           id="ct"
         >
           {getContent()}
+          <div className="print:hidden flex flex-col items-center mt-2">
+            <Button className="flex space-x-2" onClick={() => window.print()}>
+              <Printer />
+              <p>Imprimer</p>
+            </Button>
+          </div>
+        </section>
         <section className="flex flex-wrap items-center justify-center m-2 print:hidden">
           <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
             <h2 className="font-bold">Prix</h2>
