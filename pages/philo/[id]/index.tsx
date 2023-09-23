@@ -55,7 +55,7 @@ export default function PostPage() {
   return (
     <Layout>
       <Head>
-        <title>DissertGPT</title>
+        <title>{"DissertGPT | " + getSubject()}</title>
         <meta
           name="description"
           content="Accèdez à vos dissertations précédemment générées."
