@@ -1,6 +1,6 @@
 {
-  "name": "next-template",
-  "version": "3.1.0",
+  "name": "dissert-gpt",
+  "version": "3.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
