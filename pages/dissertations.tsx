@@ -1,10 +1,18 @@
 import Head from "next/head"
-import { Bookmark } from "lucide-react"
+import Link from "next/link"
+import { Bookmark, Download } from "lucide-react"
 
-import { DissertInfo } from "@/lib/dis_info"
+import { DissertInfo, DissertList } from "@/lib/dis_info"
 import { DissertUiItem } from "@/components/dissert_item"
 import { Layout } from "@/components/layout"
+import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export default function DissertPage() {
   let disserts: DissertInfo[] = []
@@ -12,6 +20,11 @@ export default function DissertPage() {
   if (typeof window !== "undefined") {
     disserts = JSON.parse(localStorage.getItem("disserts") ?? "[]")
     disserts_ph = JSON.parse(localStorage.getItem("disserts_ph") ?? "[]")
+  }
+
+  let dissert_to_export: DissertList = {
+    french: disserts,
+    philo: disserts_ph,
   }
   return (
     <Layout>
@@ -32,6 +45,31 @@ export default function DissertPage() {
         <TabsList>
           <TabsTrigger value="fr">Français</TabsTrigger>
           <TabsTrigger value="ph">Philosophie</TabsTrigger>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link
+                  href={
+                    "data:text/plain;charset=UTF-8," +
+                    encodeURIComponent(
+                      typeof window !== "undefined"
+                        ? JSON.stringify(dissert_to_export)
+                        : "{msg: 'an error occurred'}"
+                    )
+                  }
+                  download={"dissertations.json"}
+                >
+                  <Button variant="ghost" className="h-auto">
+                    <Download size={16} />
+                  </Button>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Exporter vos dissertations</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </TabsList>
         <TabsContent value="fr">
           <section className="m-2 p-5 flex flex-wrap justify-center md:justify-start">

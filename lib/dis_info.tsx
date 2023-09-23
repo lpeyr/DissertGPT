@@ -10,4 +10,9 @@ export interface DissertItem {
   type?: ContentType
 }
 
+export interface DissertList {
+  french: DissertInfo[]
+  philo: DissertInfo[]
+}
+
 export type ContentType = "ph_prob" | "ph_intro"
