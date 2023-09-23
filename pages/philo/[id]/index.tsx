@@ -31,7 +31,25 @@ export default function PostPage() {
     }
     return "$0"
   }
+  function countWords() {
+    if (typeof window !== "undefined") {
+      return JSON.parse(localStorage.getItem("disserts_ph"))[id].content.split(
+        " "
+      ).length
+    }
+  }
 
+  function countChars() {
+    if (typeof window !== "undefined") {
+      return JSON.parse(localStorage.getItem("disserts_ph"))[id].content.length
+    }
+  }
+
+  function getSubject() {
+    if (typeof window !== "undefined") {
+      return JSON.parse(localStorage.getItem("disserts_ph"))[id].subject
+    }
+  }
   return (
     <Layout>
       <Head>
@@ -59,6 +77,21 @@ export default function PostPage() {
           id="ct"
         >
           {getContent()}
+        <section className="flex flex-wrap items-center justify-center m-2 print:hidden">
+          <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
+            <h2 className="font-bold">Prix</h2>
+            <p id="price" className="font-bold text-2xl">
+              {getPrice()}
+            </p>
+          </div>
+          <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
+            <h2 className="font-bold">Mots</h2>
+            <p className="font-bold text-2xl">{countWords()}</p>
+          </div>
+          <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
+            <h2 className="font-bold">Caractères</h2>
+            <p className="font-bold text-2xl">{countChars()}</p>
+          </div>
         </section>
       </section>
     </Layout>
