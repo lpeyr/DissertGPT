@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { encode } from "gpt-token-utils"
 import parse from "html-react-parser"
-import { Printer } from "lucide-react"
+import { Copy, Printer } from "lucide-react"
 
 import { Layout } from "@/components/layout"
 import { Button } from "@/components/ui/button"
@@ -15,9 +15,9 @@ export default function PostPage() {
   function getContent() {
     if (typeof window !== "undefined") {
       return (
-        <div>
+        <p id="contentp">
           {parse(JSON.parse(localStorage.getItem("disserts_ph"))[id].content)}
-        </div>
+        </p>
       )
     }
     return <p>Une erreur s&apos;est produite.</p>
@@ -70,10 +70,21 @@ export default function PostPage() {
           id="ct"
         >
           {getContent()}
-          <div className="print:hidden flex flex-col items-center mt-2">
+          <div className="print:hidden flex justify-center space-x-2 mt-2">
             <Button className="flex space-x-2" onClick={() => window.print()}>
               <Printer />
               <p>Imprimer</p>
+            </Button>
+            <Button
+              variant="outline"
+              className="flex space-x-2"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  document.getElementById("contentp").innerText
+                )
+              }
+            >
+              <Copy size={16} />
             </Button>
           </div>
         </section>
