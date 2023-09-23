@@ -1,11 +1,12 @@
 import Head from "next/head"
 import Link from "next/link"
-import { Bookmark, Download } from "lucide-react"
+import { Bookmark, Download, Upload } from "lucide-react"
 
 import { DissertInfo, DissertList } from "@/lib/dis_info"
 import { DissertUiItem } from "@/components/dissert_item"
 import { Layout } from "@/components/layout"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Tooltip,
@@ -26,6 +27,20 @@ export default function DissertPage() {
     french: disserts,
     philo: disserts_ph,
   }
+
+  function Import(event) {
+    let file = event.target.files[0] // get the selected file
+    let reader = new FileReader() // create a FileReader object
+    reader.onload = function (event) {
+      let text: string = event.target.result as string // get the file content as text
+      let json: DissertList = JSON.parse(text) // parse the text as JSON
+      disserts = disserts.concat(json.french)
+      disserts_ph = disserts_ph.concat(json.philo)
+      localStorage.setItem("disserts", JSON.stringify(disserts))
+      localStorage.setItem("disserts_ph", JSON.stringify(disserts_ph))
+    }
+    reader.readAsText(file) // read the file as text
+  }
   return (
     <Layout>
       <Head>
@@ -41,6 +56,13 @@ export default function DissertPage() {
         <h2 className="font-bold">Mes dissertations</h2>
         <p>Accèdez à vos dissertations précédemment générées.</p>
       </section>
+      <Input
+        type="file"
+        id="FileSelector"
+        accept="application/json"
+        className="hidden"
+        onChange={Import}
+      ></Input>
       <Tabs defaultValue="fr" className="m-2">
         <TabsList>
           <TabsTrigger value="fr">Français</TabsTrigger>
@@ -67,6 +89,28 @@ export default function DissertPage() {
               </TooltipTrigger>
               <TooltipContent>
                 <p>Exporter vos dissertations</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Button
+                  onClick={() =>
+                    (
+                      document.getElementById(
+                        "FileSelector"
+                      ) as HTMLInputElement
+                    ).click()
+                  }
+                  variant="ghost"
+                  className="h-auto"
+                >
+                  <Upload size={16} />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Importer vos dissertations</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
