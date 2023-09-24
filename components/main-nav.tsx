@@ -52,7 +52,7 @@ export function MainNav({ items }: MainNavProps) {
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-cyan-500 to-blue-600 p-6 no-underline outline-none focus:shadow-md"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-cyan-500 to-blue-600 p-6 text-white no-underline outline-none focus:shadow-md"
                       href="/"
                     >
                       <Image
@@ -61,12 +61,11 @@ export function MainNav({ items }: MainNavProps) {
                         width={50}
                         src="/logo.png"
                       />
-                      <div className="mb-2 mt-4 text-lg font-medium">
+                      <div className="mb-2 mt-4 text-lg font-bold">
                         DissertGPT
                       </div>
                       <p className="text-muted-foreground text-sm leading-tight">
-                        Création de dissertations propulsées par l'Intelligence
-                        Artificielle Générative.
+                        Création de dissertations propulsées par l'IA.
                       </p>
                     </a>
                   </NavigationMenuLink>
@@ -138,7 +137,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="text-sm font-bold leading-none">{title}</div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
