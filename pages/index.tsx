@@ -32,8 +32,6 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
-const { Configuration, OpenAIApi } = require("openai")
-
 export default function IndexPage() {
   return (
     <Layout>

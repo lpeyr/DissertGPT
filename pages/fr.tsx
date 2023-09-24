@@ -31,7 +31,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
-const { Configuration, OpenAIApi } = require("openai")
+import OpenAI from 'openai';
 
 export default function IndexPage() {
   const [st1, setSt1] = useState("hidden")
@@ -68,12 +68,11 @@ export default function IndexPage() {
     }
     ;(document.getElementById("send") as HTMLButtonElement).disabled = true
     document.getElementById("wait").classList.remove("hidden")
-    const configuration = new Configuration({
-      apiKey: key,
+    const openai = new OpenAI({
+      apiKey: key, dangerouslyAllowBrowser: true
     })
-    const openai = new OpenAIApi(configuration)
     try {
-      const completion = await openai.createChatCompletion({
+      const completion = await openai.chat.completions.create({
         model: model,
         messages: [
           {
@@ -87,7 +86,7 @@ export default function IndexPage() {
           },
         ],
       })
-      let res = completion.data.choices[0].message.content
+      let res = completion.choices[0].message.content
       disserts.push({ subject: subject, content: res })
       document.getElementById("response").innerHTML = res
       ;(document.getElementById("send") as HTMLButtonElement).disabled = false
@@ -130,14 +129,13 @@ export default function IndexPage() {
     }
     ;(document.getElementById("send") as HTMLButtonElement).disabled = true
     document.getElementById("wait").classList.remove("hidden")
-    const configuration = new Configuration({
-      apiKey: key,
+    const openai = new OpenAI({
+      apiKey: key, dangerouslyAllowBrowser: true
     })
-    const openai = new OpenAIApi(configuration)
 
     // OpenAI API
     try {
-      const completion = await openai.createChatCompletion({
+      const completion = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
           {
@@ -153,10 +151,10 @@ export default function IndexPage() {
           },
         ],
       })
-      let plan = completion.data.choices[0].message.content
+      let plan = completion.choices[0].message.content
       setSt1("")
 
-      const intro = await openai.createChatCompletion({
+      const intro = await openai.chat.completions.create({
         model: model,
         messages: [
           {
@@ -174,10 +172,10 @@ export default function IndexPage() {
           },
         ],
       })
-      let int = intro.data.choices[0].message.content
+      let int = intro.choices[0].message.content
       setSt2("")
 
-      const ccl = await openai.createChatCompletion({
+      const ccl = await openai.chat.completions.create({
         model: model,
         messages: [
           {
@@ -196,10 +194,10 @@ export default function IndexPage() {
         ],
       })
 
-      let conclusion = ccl.data.choices[0].message.content
+      let conclusion = ccl.choices[0].message.content
       setSt3("")
 
-      const content = await openai.createChatCompletion({
+      const content = await openai.chat.completions.create({
         model: model,
         messages: [
           {
@@ -217,7 +215,7 @@ export default function IndexPage() {
           },
         ],
       })
-      let con = content.data.choices[0].message.content
+      let con = content.choices[0].message.content
       setSt4("")
 
       let res = int + con + conclusion

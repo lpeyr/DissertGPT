@@ -32,7 +32,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
-const { Configuration, OpenAIApi } = require("openai")
+import OpenAI from 'openai';
 
 export default function IndexPage() {
   let model = "gpt-4"
@@ -65,12 +65,11 @@ export default function IndexPage() {
     }
     ;(document.getElementById("send") as HTMLButtonElement).disabled = true
     document.getElementById("wait").classList.remove("hidden")
-    const configuration = new Configuration({
-      apiKey: key,
+    const openai = new OpenAI({
+      apiKey: key, dangerouslyAllowBrowser: true
     })
-    const openai = new OpenAIApi(configuration)
     try {
-      const completion = await openai.createChatCompletion({
+      const completion = await openai.chat.completions.create({
         model: model,
         messages: [
           {
@@ -84,7 +83,7 @@ export default function IndexPage() {
           },
         ],
       })
-      let res = completion.data.choices[0].message.content
+      let res = completion.choices[0].message.content
       disserts.push({ subject: subject, content: res, type: type })
       document.getElementById("response").innerHTML = res
       ;(document.getElementById("send") as HTMLButtonElement).disabled = false
