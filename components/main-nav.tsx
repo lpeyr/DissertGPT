@@ -1,6 +1,8 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Label } from "@radix-ui/react-dropdown-menu"
+import { Menu } from "lucide-react"
 
 import { NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
@@ -15,6 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Input } from "./ui/input"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,6 +27,15 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet"
 
 interface MainNavProps {
   items?: NavItem[]
@@ -32,17 +44,42 @@ interface MainNavProps {
 export function MainNav({ items }: MainNavProps) {
   return (
     <div className="flex items-center gap-6 md:gap-10">
-      <Link
-        href="/"
-        className="hidden items-center space-x-2 print:block md:flex"
-      >
-        <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
-        </span>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button className="block sm:hidden" variant="ghost">
+            <Menu />
+          </Button>
+        </SheetTrigger>
+        <SheetContent position="left" size="full">
+          <SheetHeader>
+            <SheetTitle>DissertGPT</SheetTitle>
+            <SheetDescription>
+              Création de dissertations propulsées par l'IA.
+            </SheetDescription>
+          </SheetHeader>
+          <div className="my-2 flex flex-col">
+            {items?.map(
+              (item, index) =>
+                item.href && (
+                  <Link
+                    className="rounded-md p-2 font-medium transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+                    key={index}
+                    href={item.href}
+                  >
+                    {item.title}
+                  </Link>
+                )
+            )}
+          </div>
+        </SheetContent>
+      </Sheet>
+      <Link href="/" className="items-center space-x-2 md:flex">
+        <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
-      <p className="m-1 flex items-center rounded-full border border-blue-600 bg-blue-100 px-2 py-1 text-center text-sm text-blue-900 dark:bg-blue-900 dark:text-blue-300">
+      <p className="m-1 hidden items-center rounded-full border border-blue-600 bg-blue-100 px-2 py-1 text-center text-sm text-blue-900 dark:bg-blue-900 dark:text-blue-300 sm:block">
         v3.2
       </p>
+
       <NavigationMenu className="hidden sm:block">
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -88,37 +125,6 @@ export function MainNav({ items }: MainNavProps) {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="-ml-4 text-base hover:bg-transparent focus:ring-0 md:hidden"
-          >
-            {" "}
-            <span className="font-bold print:hidden">Menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="start"
-          sideOffset={24}
-          className="w-[300px] overflow-scroll"
-        >
-          <DropdownMenuLabel>
-            <Link href="/" className="flex items-center">
-              {siteConfig.name}
-            </Link>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <DropdownMenuItem key={index} asChild>
-                  <Link href={item.href}>{item.title}</Link>
-                </DropdownMenuItem>
-              )
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
     </div>
   )
 }
