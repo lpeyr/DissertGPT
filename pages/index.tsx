@@ -1,36 +1,10 @@
-import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
-import { encode } from "gpt-token-utils"
 import {
-  AlertTriangle,
-  ArrowRight,
-  Book,
-  Copy,
-  FileText,
-  Lightbulb,
-  ListStart,
-  Loader2,
-  Pencil,
-  Zap,
+  Book, Lightbulb
 } from "lucide-react"
 
-import { siteConfig } from "@/config/site"
-import { DissertInfo } from "@/lib/dis_info"
 import { Layout } from "@/components/layout"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
-import { Textarea } from "@/components/ui/textarea"
 
 export default function IndexPage() {
   return (

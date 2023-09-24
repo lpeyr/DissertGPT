@@ -1,6 +1,5 @@
 import { useState } from "react"
 import Head from "next/head"
-import Link from "next/link"
 import { encode } from "gpt-token-utils"
 import {
   AlertTriangle,
@@ -14,10 +13,9 @@ import {
   Zap,
 } from "lucide-react"
 
-import { siteConfig } from "@/config/site"
 import { DissertInfo } from "@/lib/dis_info"
 import { Layout } from "@/components/layout"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -31,7 +29,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
-import OpenAI from 'openai';
+import OpenAI from 'openai'
 
 export default function IndexPage() {
   const [st1, setSt1] = useState("hidden")
