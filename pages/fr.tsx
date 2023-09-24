@@ -306,8 +306,8 @@ export default function IndexPage() {
         <h2 className="font-bold">Informations</h2>
         <p>Entrez les informations concernant votre sujet.</p>
       </section>
-      <section id="infos" className="flex flex-col items-center space-y-2 m-2">
-        <div className="w-full flex flex-col space-y-2 sm:space-y-0 sm:space-x-2 sm:flex-row">
+      <section id="infos" className="m-2 flex flex-col items-center space-y-2">
+        <div className="flex w-full flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
           <Input
             id="pwr"
             type="password"
@@ -315,20 +315,20 @@ export default function IndexPage() {
             defaultValue={k}
           />
           <Select onValueChange={changeModel} defaultValue="gpt-4">
-            <SelectTrigger className="sm:w-[150px] min-w-[130px]">
+            <SelectTrigger className="min-w-[130px] sm:w-[150px]">
               <SelectValue placeholder="Modèle" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Modèle</SelectLabel>
                 <SelectItem value="gpt-4">
-                  <div className="flex space-x-1 items-center">
+                  <div className="flex items-center space-x-1">
                     <Zap size={16} />
                     <p>GPT-4</p>
                   </div>
                 </SelectItem>
                 <SelectItem value="gpt-3.5-turbo">
-                  <div className="flex space-x-1 items-center">
+                  <div className="flex items-center space-x-1">
                     <Lightbulb size={16} />
                     <p>GPT-3.5</p>
                   </div>
@@ -338,32 +338,32 @@ export default function IndexPage() {
           </Select>
 
           <Select onValueChange={changeGoal} defaultValue="super-d">
-            <SelectTrigger className="sm:w-[240px] min-w-[240px]">
+            <SelectTrigger className="min-w-[240px] sm:w-[240px]">
               <SelectValue placeholder="Mode" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Mode</SelectLabel>
                 <SelectItem className="flex space-x-1" value="super-d">
-                  <div className="flex space-x-1 items-center">
+                  <div className="flex items-center space-x-1">
                     <Lightbulb size={16} />
                     <p>Dissertation longue (v2)</p>
                   </div>
                 </SelectItem>
                 <SelectItem value="full">
-                  <div className="flex space-x-1 items-center">
+                  <div className="flex items-center space-x-1">
                     <FileText size={16} />
                     <p>Dissertation courte (v1.5)</p>
                   </div>
                 </SelectItem>
                 <SelectItem className="flex space-x-1" value="plan">
-                  <div className="flex space-x-1 items-center">
+                  <div className="flex items-center space-x-1">
                     <Pencil size={16} />
                     <p>Plan</p>
                   </div>
                 </SelectItem>
                 <SelectItem className="flex space-x-1" value="intro-ccl">
-                  <div className="flex space-x-1 items-center">
+                  <div className="flex items-center space-x-1">
                     <ListStart size={16} />
                     <p>Intro et Conclusion</p>
                   </div>
@@ -390,11 +390,11 @@ export default function IndexPage() {
       </section>
       <Separator className="my-4" />
       <section className="m-2">
-        <div className="flex space-x-2 items-center">
+        <div className="flex items-center space-x-2">
           <h2 className="font-bold">Résultat</h2>
           <p
             id="price"
-            className="px-2 rounded-full bg-green-200 dark:bg-green-950 text-green-800 dark:text-green-400 dark:border-green-400 border-green-800 border"
+            className="rounded-full border border-green-800 bg-green-200 px-2 text-green-800 dark:border-green-400 dark:bg-green-950 dark:text-green-400"
           >
             $0
           </p>
@@ -403,14 +403,14 @@ export default function IndexPage() {
           Votre dissertation s&apos;affichera ici. Le processus peut prendre du
           temps.
         </p>
-        <div className="flex flex-col md:flex-row items-center space-x-2 p-2 m-2 rounded-md dark:bg-orange-950 bg-orange-100 border border-orange-800 dark:border-orange-200 text-orange-800 dark:text-orange-200">
+        <div className="m-2 flex flex-col items-center space-x-2 rounded-md border border-orange-800 bg-orange-100 p-2 text-orange-800 dark:border-orange-200 dark:bg-orange-950 dark:text-orange-200 md:flex-row">
           <AlertTriangle className="mr-2" size={20} />
           La technologie de l&apos;IA est encore expérimentale et peut produire
           des erreurs. Il convient de l&apos;utiliser avec un jugement humain.
         </div>
       </section>
       <section id="wait" className="hidden">
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center justify-center">
           <Loader2 className="animate-spin" size={96} />
           <h3>Contenu en cours de génération</h3>
           <p className={st1}>✅ Plan</p>

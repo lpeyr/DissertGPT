@@ -64,11 +64,11 @@ export default function PostPage() {
       </Head>
       <section className="flex flex-col items-center">
         <section
-          className="m-2 p-4 shadow-lg print:shadow-none print:text-black dark:bg-slate-900 rounded-md md:w-[90%] lg:w-[60%] xl:w-[50%] text-justify"
+          className="m-2 rounded-md p-4 text-justify shadow-lg dark:bg-slate-900 print:text-black print:shadow-none md:w-[90%] lg:w-[60%] xl:w-[50%]"
           id="ct"
         >
           {getContent()}
-          <div className="print:hidden flex justify-center space-x-2 mt-2">
+          <div className="mt-2 flex justify-center space-x-2 print:hidden">
             <Button className="flex space-x-2" onClick={() => window.print()}>
               <Printer />
               <p>Imprimer</p>
@@ -86,20 +86,20 @@ export default function PostPage() {
             </Button>
           </div>
         </section>
-        <section className="flex flex-wrap items-center justify-center m-2 print:hidden">
-          <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
+        <section className="m-2 flex flex-wrap items-center justify-center print:hidden">
+          <div className="m-2 w-48 rounded-lg bg-white p-4 shadow-md dark:bg-slate-900">
             <h2 className="font-bold">Prix</h2>
-            <p id="price" className="font-bold text-2xl">
+            <p id="price" className="text-2xl font-bold">
               {getPrice()}
             </p>
           </div>
-          <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
+          <div className="m-2 w-48 rounded-lg bg-white p-4 shadow-md dark:bg-slate-900">
             <h2 className="font-bold">Mots</h2>
-            <p className="font-bold text-2xl">{countWords()}</p>
+            <p className="text-2xl font-bold">{countWords()}</p>
           </div>
-          <div className="p-4 m-2 rounded-lg shadow-md bg-white dark:bg-slate-900 w-48">
+          <div className="m-2 w-48 rounded-lg bg-white p-4 shadow-md dark:bg-slate-900">
             <h2 className="font-bold">Caractères</h2>
-            <p className="font-bold text-2xl">{countChars()}</p>
+            <p className="text-2xl font-bold">{countChars()}</p>
           </div>
         </section>
       </section>

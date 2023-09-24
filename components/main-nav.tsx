@@ -21,16 +21,16 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
   return (
-    <div className="flex gap-6 md:gap-10 items-center">
+    <div className="flex items-center gap-6 md:gap-10">
       <Link
         href="/"
-        className="hidden items-center space-x-2 md:flex print:block"
+        className="hidden items-center space-x-2 print:block md:flex"
       >
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
-      <p className="text-center flex items-center px-2 py-1 text-sm rounded-full m-1 text-blue-900 dark:text-blue-300 dark:bg-blue-900 bg-blue-100 border border-blue-600">
+      <p className="m-1 flex items-center rounded-full border border-blue-600 bg-blue-100 px-2 py-1 text-center text-sm text-blue-900 dark:bg-blue-900 dark:text-blue-300">
         v3.2
       </p>
       {items?.length ? (

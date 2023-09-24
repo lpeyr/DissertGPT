@@ -116,7 +116,7 @@ export default function DissertPage() {
           </TooltipProvider>
         </TabsList>
         <TabsContent value="fr">
-          <section className="m-2 p-5 flex flex-wrap justify-center md:justify-start">
+          <section className="m-2 flex flex-wrap justify-center p-5 md:justify-start">
             {disserts.length > 0 ? (
               disserts.map((el, index) => {
                 return (
@@ -129,7 +129,7 @@ export default function DissertPage() {
               })
             ) : (
               <>
-                <div className="p-5 flex flex-col items-center justify-center w-full h-full">
+                <div className="flex h-full w-full flex-col items-center justify-center p-5">
                   <Bookmark size={48} />
                   <p className="font-bold">Rien à voir pour le moment.</p>
                 </div>
@@ -138,7 +138,7 @@ export default function DissertPage() {
           </section>
         </TabsContent>
         <TabsContent value="ph">
-          <section className="m-2 p-5 flex flex-wrap justify-center md:justify-start">
+          <section className="m-2 flex flex-wrap justify-center p-5 md:justify-start">
             {disserts_ph.length > 0 ? (
               disserts_ph.map((el, index) => {
                 return (
@@ -152,7 +152,7 @@ export default function DissertPage() {
               })
             ) : (
               <>
-                <div className="p-5 flex flex-col items-center justify-center w-full h-full">
+                <div className="flex h-full w-full flex-col items-center justify-center p-5">
                   <Bookmark size={48} />
                   <p className="font-bold">Rien à voir pour le moment.</p>
                 </div>

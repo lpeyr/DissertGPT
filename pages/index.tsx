@@ -18,10 +18,10 @@ export default function IndexPage() {
       </Head>
       <section
         style={{ minHeight: "calc(100vh - 74px)" }}
-        className="m-2 flex flex-col justify-center items-center"
+        className="m-2 flex flex-col items-center justify-center"
       >
         <div className="m-2 flex flex-col items-center">
-          <h2 className="font-bold text-4xl text-center">
+          <h2 className="text-center text-4xl font-bold">
             Bienvenue sur DissertGPT
           </h2>
           <p>Quelle discipline voulez-vous choisir ?</p>
@@ -29,23 +29,23 @@ export default function IndexPage() {
         <div className="flex flex-wrap justify-center">
           <Link
             href={"/fr"}
-            className="border max-w-[300px] border-slate-200 dark:border-slate-800 m-2 rounded-lg shadow-md hover:shadow-lg hover:shadow-blue-200 hover:dark:shadow-blue-600/[.33] hover:-translate-y-2 transition flex flex-col items-center"
+            className="m-2 flex max-w-[300px] flex-col items-center rounded-lg border border-slate-200 shadow-md transition hover:-translate-y-2 hover:shadow-lg hover:shadow-blue-200 dark:border-slate-800 hover:dark:shadow-blue-600/[.33]"
           >
             <Book size={48} className="my-2 h-32" />
-            <span className="border-t border-slate-200 dark:border-slate-800 p-2">
+            <span className="border-t border-slate-200 p-2 dark:border-slate-800">
               <h3>Français</h3>
               <p>Créer des dissertations type bac de français.</p>
             </span>
           </Link>
           <Link
             href={"/ph"}
-            className="border max-w-[300px] border-slate-200 dark:border-slate-800 m-2 rounded-lg shadow-md hover:shadow-lg hover:shadow-purple-200 hover:dark:shadow-purple-600/[.33] hover:-translate-y-2 transition flex flex-col items-center"
+            className="m-2 flex max-w-[300px] flex-col items-center rounded-lg border border-slate-200 shadow-md transition hover:-translate-y-2 hover:shadow-lg hover:shadow-purple-200 dark:border-slate-800 hover:dark:shadow-purple-600/[.33]"
           >
             <Lightbulb size={48} className="my-2 h-32" />
-            <span className="border-t border-slate-200 dark:border-slate-800 p-2">
+            <span className="border-t border-slate-200 p-2 dark:border-slate-800">
               <h3 className="flex items-center">
                 Philosophie{" "}
-                <span className="text-xs rounded-full text-white bg-purple-600 mx-1 px-2 py-[0.7px]">
+                <span className="mx-1 rounded-full bg-purple-600 px-2 py-[0.7px] text-xs text-white">
                   Beta
                 </span>
               </h3>

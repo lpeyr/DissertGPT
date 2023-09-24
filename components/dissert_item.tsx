@@ -42,7 +42,7 @@ export function DissertUiItem(props: DissertItem) {
         <TooltipTrigger>
           <Link
             href={`/${props.philo ? "/philo" : "/disserts"}/${props.id}`}
-            className="w-[380px] m-2 shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700 rounded-md flex flex-col hover:-translate-y-2 transition overflow-hidden"
+            className="m-2 flex w-[380px] flex-col overflow-hidden rounded-md border border-slate-200 shadow-md transition hover:-translate-y-2 hover:shadow-lg dark:border-slate-700"
           >
             <span
               className={
@@ -54,7 +54,7 @@ export function DissertUiItem(props: DissertItem) {
               {label == "" ? (
                 <></>
               ) : (
-                <span className="w-auto p-1 mx-2 text-sm mt-1 rounded-full border border-slate-500 dark:border-slate-400 text-slate-500 dark:text-slate-400">
+                <span className="mx-2 mt-1 w-auto rounded-full border border-slate-500 p-1 text-sm text-slate-500 dark:border-slate-400 dark:text-slate-400">
                   {label}
                 </span>
               )}
