@@ -54,7 +54,7 @@ export function MainNav({ items }: MainNavProps) {
           <SheetHeader>
             <SheetTitle>DissertGPT</SheetTitle>
             <SheetDescription>
-              Création de dissertations propulsées par l'IA.
+              Création de dissertations propulsées par l&apos;IA.
             </SheetDescription>
           </SheetHeader>
           <div className="my-2 flex flex-col">
@@ -102,7 +102,7 @@ export function MainNav({ items }: MainNavProps) {
                         DissertGPT
                       </div>
                       <p className="text-muted-foreground text-sm leading-tight">
-                        Création de dissertations propulsées par l'IA.
+                        Création de dissertations propulsées par l&apos;IA.
                       </p>
                     </a>
                   </NavigationMenuLink>
