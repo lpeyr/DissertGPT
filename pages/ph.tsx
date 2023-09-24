@@ -9,6 +9,7 @@ import {
   Pencil,
   Zap,
 } from "lucide-react"
+import OpenAI from "openai"
 
 import { ContentType, DissertInfo } from "@/lib/dis_info"
 import { Layout } from "@/components/layout"
@@ -25,8 +26,6 @@ import {
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
-
-import OpenAI from 'openai'
 
 export default function IndexPage() {
   let model = "gpt-4"
@@ -60,7 +59,8 @@ export default function IndexPage() {
     ;(document.getElementById("send") as HTMLButtonElement).disabled = true
     document.getElementById("wait").classList.remove("hidden")
     const openai = new OpenAI({
-      apiKey: key, dangerouslyAllowBrowser: true
+      apiKey: key,
+      dangerouslyAllowBrowser: true,
     })
     try {
       const completion = await openai.chat.completions.create({
