@@ -77,7 +77,7 @@ export function MainNav({ items }: MainNavProps) {
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
       <p className="m-1 hidden items-center rounded-full border border-blue-600 bg-blue-100 px-2 py-1 text-center text-sm text-blue-900 dark:bg-blue-900 dark:text-blue-300 sm:block">
-        v3.2
+        v3.3
       </p>
 
       <NavigationMenu className="hidden sm:block">
